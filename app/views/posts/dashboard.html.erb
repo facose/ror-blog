@@ -1,0 +1,38 @@
+<!-- Error check and response -->
+
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-secondary" role="alert">
+      <div class="container">
+        <h5><%= pluralize(@post.errors.count, "error") %></h5>
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<!-- Main HTML for dashboard view -->
+
+<div class="container dashboard-title">
+  <h1>New Post</h1>
+</div>
+<section class="container-fluid main">
+  <div class="form">
+    <%= form_with(model: @post) do |form| %>
+      <%= form.label :title, "Title:" %><br />
+      <%= form.text_field :title, class: 'form-control'%><br />
+      <%= form.label :image, "Image Url:" %><br />
+      <%= form.text_field :image, class: 'form-control' %><br />
+      <%= form.label :content, "Content:" %><br />
+      <%= form.text_area :content, class: 'form-control' %><br />
+      <%= form.submit class: 'btn btn-secondary', value: 'Submit' %>
+    <% end %>
+  </div>
+  <div class="background">
+    
+  </div>
+</section>
